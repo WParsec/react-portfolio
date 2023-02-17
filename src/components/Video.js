@@ -7,7 +7,7 @@ import bgVideo from "../assets/videos/bg-art.mp4";
 const Video = () => {
     return (
         <div className="hero">
-            <video autoPlay loop muted id="video">
+            <video autoPlay loop muted playsinline id="video">
                 <source src={bgVideo} type="video/mp4" />
             </video>
             <div className="hero-content">
