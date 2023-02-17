@@ -52,7 +52,7 @@ video {
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     .hero-btns {
         flex-direction: column;
         gap: 1rem;
