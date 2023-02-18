@@ -29,31 +29,72 @@ import fallbackImage from '../assets/fallback.jpg';
 
 // export default Video;
 
-
-const Video = () => {
-  const [canPlayVideo, setCanPlayVideo] = useState(false);
-  const [isLowPowerMode, setIsLowPowerMode] = useState(false);
+function Video() {
+  const [loading, setLoading] = useState(true);
+  const [lowPowerMode, setLowPowerMode] = useState(false);
 
   useEffect(() => {
-    // Check if the device is in low power mode
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setIsLowPowerMode(mediaQuery.matches);
-    mediaQuery.addEventListener('change', (event) => setIsLowPowerMode(event.matches));
 
-    // Check if the video can play
-    const video = document.createElement('video');
-    video.addEventListener('canplaythrough', () => {
-      setCanPlayVideo(true);
-    });
-    video.src = bgVideo;
+    setLowPowerMode(mediaQuery.matches);
+
+    const handleChange = (event) => {
+      setLowPowerMode(event.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const video = document.getElementById('video');
+    const fallbackImage = document.getElementById('fallback-image');
+
+    const onLoad = () => {
+      setLoading(false);
+    };
+
+    const onError = () => {
+      setLoading(false);
+      fallbackImage.style.display = 'block';
+    };
+
+    video.addEventListener('loadeddata', onLoad);
+    video.addEventListener('error', onError);
+
+    return () => {
+      video.removeEventListener('loadeddata', onLoad);
+      video.removeEventListener('error', onError);
+    };
   }, []);
 
   return (
     <div className="hero">
-      {isLowPowerMode || !canPlayVideo ? (
-        <img className='fallback' src={fallbackImage} alt="Fallback Image" />
+      {loading && (
+        <div className="spinner">
+          <div className="spinner-icon"></div>
+        </div>
+      )}
+      {lowPowerMode ? (
+        <img
+          src="../assets/fallback.jpg"
+          alt="Fallback Image"
+          id="fallback-image"
+          style={{ display: loading ? 'none' : 'block' }}
+        />
       ) : (
-        <video autoPlay loop muted playsInline id="video" poster={fallbackImage}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          id="video"
+          poster="../assets/fallback.jpg"
+          style={{ display: loading ? 'none' : 'block' }}
+        >
           <source src={bgVideo} type="video/mp4" />
         </video>
       )}
@@ -76,6 +117,6 @@ const Video = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Video;
