@@ -50,9 +50,9 @@ function Video() {
     return (
       <div className="hero">
         {lowPowerMode ? (
-          <img src="../assets/bg-static.jpg" alt="Fallback Image" />
+          <img src="../assets/fallback.jpg" alt="Fallback Image" />
         ) : (
-          <video autoPlay loop muted playsInline id="video">
+          <video autoPlay loop muted playsInline id="video" poster="../assets/fallback.jpg">
             <source src={bgVideo} type="video/mp4" />
           </video>
         )}
