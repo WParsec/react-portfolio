@@ -51,7 +51,7 @@ const Video = () => {
   return (
     <div className="hero">
       {isLowPowerMode || !canPlayVideo ? (
-        <img src={fallbackImage} alt="Fallback Image" />
+        <img className='fallback' src={fallbackImage} alt="Fallback Image" />
       ) : (
         <video autoPlay loop muted playsInline id="video" poster={fallbackImage}>
           <source src={bgVideo} type="video/mp4" />
