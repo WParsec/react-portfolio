@@ -52,7 +52,7 @@ function Video() {
         {lowPowerMode ? (
           <img src="../assets/bg-static.jpg" alt="Fallback Image" />
         ) : (
-          <video autoPlay loop muted id="video">
+          <video autoPlay loop muted playsInline id="video">
             <source src={bgVideo} type="video/mp4" />
           </video>
         )}
