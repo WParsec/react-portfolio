@@ -3,14 +3,16 @@
     height: 100vh;
     width: 100%;
     overflow: hidden;
+    background-image: url("../assets/fallback.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
-video, .fallback {
+video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     position: fixed;
-    z-index:  1;
 }
 
 .hero-content {
@@ -22,8 +24,7 @@ video, .fallback {
     align-items: center;
     flex-direction: column;
     gap: 3rem;
-    z-index: 10;
-}
+} 
 
 .hero-text {
     text-align: center;
@@ -53,6 +54,9 @@ video, .fallback {
     }
     .signature {
         font-size: 3rem;
+    }
+    video {
+        display: none;
     }
 }
 
