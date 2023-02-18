@@ -50,6 +50,9 @@ video {
     .hero-text {
         font-size: 1.8rem;
     }
+    .signature {
+        font-size: 3rem;
+    }
 }
 
 @media screen and (max-width: 450px) {

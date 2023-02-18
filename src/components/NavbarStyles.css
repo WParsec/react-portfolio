@@ -13,10 +13,16 @@ header {
     background: transparent;
     height: 5rem;
     align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .logo {
-    color: #fff;
+    height: 1.5rem;
+    width: 3rem;
+    background-image: url("../assets/logo.svg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
 }
 
 .nav-menu {
