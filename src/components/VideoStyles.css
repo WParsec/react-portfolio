@@ -10,7 +10,18 @@ video, .fallback {
     height: 100%;
     object-fit: cover;
     position: fixed;
+}
+
+video {
     z-index: 1;
+}
+
+.fallback {
+    background-image: url("../assets/fallback.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
 }
 
 .hero-content {
