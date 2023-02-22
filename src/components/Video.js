@@ -19,7 +19,7 @@ const Video = () => {
                 <source src={bgVideo} type="video/mp4" />
             </video>
             <div className="hero-content">
-                <p onClick={showVideo} className='play'>Play</p>
+                <img src={require('../assets/play.svg').default} onClick={showVideo} className='play'/>
                 <div className="hero-text">
                     <p className="signature">Tom Ertvaag</p>
                     <h1>Design & Development</h1>
